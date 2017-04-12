@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 #coding: utf-8
 import MeCab
+import sys
+import codecs
+
+#デコード用
+reload(sys)
+sys.setdefaultencoding('utf-8')
+import site
+
+
 fname = 'neko.txt'
 fname_parsed = 'neko.txt.mecab'
 
@@ -40,7 +49,8 @@ def neko_lines():
                 "surface" : cols[0],
                 "base" : res_cols[6],
                 "pos" : res_cols[0],
-                "pos1" : res_cols[1]
+                "pos1" : res_cols[1],
+                "type_test" : type(res_cols[0]) #型判定
             }
             morphemes.append(morpheme)
 
@@ -49,10 +59,11 @@ def neko_lines():
                 yield morphemes
                 morphemes = []
 
+
 #形態素解析
 parse_neko()
 
-#1文ずつ辞書のリストを作成
+#1文ずつ辞書のリストを作成(
 lines = neko_lines()
 for line in lines:
-    print(line)
+    print(str(line).decode('string-escape'))
