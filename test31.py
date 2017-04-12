@@ -1,4 +1,4 @@
-#!/usr/bin/eny python
+#!/usr/bin/env python
 #coding: utf-8
 import MeCab
 fname = 'neko.txt'
@@ -10,7 +10,7 @@ def parse_neko():
     with open(fname) as data_file, \
         open(fname_parsed, mode="w") as out_file:
         mecab = MeCab.Tagger()
-        out_file.write(mecab.parse(data_file.read())).decoding = "utf-8"
+        out_file.write(mecab.parse(data_file.read()))
 
 def neko_lines():
     """「吾輩は猫である」の形態素解析結果のジェネレータ
@@ -63,4 +63,4 @@ for line in lines:
             verbs_test.append(morpheme['surface']) #確認用の出現順リストにも追加
 
 #確認しやすいようにvarbs_testを使って出現順にソートして表示
-print(sorted(verbs, key=verbs_test.index))
+print(str(sorted(verbs, key=verbs_test.index)).decode("string-escape"))
