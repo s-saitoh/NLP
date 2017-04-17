@@ -218,3 +218,5 @@ for chunks in neco_lines():
     if len(edges) > 0:
         graph = graph_from_edges_ex(edges, directed=True)
         graph.write_png('retult.png')
+
+# bash on Ubuntu on Windows で日本語入力ができないため動作未確認
