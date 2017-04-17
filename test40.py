@@ -3,7 +3,7 @@
 import CaboCha
 
 fname = 'neko.txt'
-fname_parsed = 'neko.txt.mecab'
+fname_parsed = 'neko.txt.cabocha'
 
 def parse_neko():
     """「吾輩は猫である」を係り受け解析
@@ -18,6 +18,8 @@ def parse_neko():
             out_file.write(
                 cabocha.parse(line).toString(CaboCha.FORMAT_LATTICE)
             )
+            #lattice型で出力
+
 
 class Morph:
     '''
