@@ -33,10 +33,7 @@ parse_nlp()
 root = ET.parse(fname_parsed)
 
 # tokenの抽出
-for token in root.iter('token'): # xmlでのイテレート処理（繰り返し）
-
-    # 単語、レンマ、品詞の抽出
-    word = token.findtext('word')
-    lemma = token.findtext('lemma')
-    pos = token.findtext('POS')
-    print('{}\t{}\t{}'.format(word, lemma, pos))
+for token in root.iterfind(
+    './document/sentences/sentence/tokens/token[NER="PERSON"]'
+): # xmlでのイテレート処理（繰り返し）
+    print(token.findtext('word'))
