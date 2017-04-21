@@ -32,6 +32,11 @@ parse_nlp()
 # 解析結果のxmlをパース
 root = ET.parse(fname_parsed)
 
-# wordのみ取り出し
-for word in root.iter('word'):
-    print(word.text)
+# tokenの抽出
+for token in root.iter('token'):
+
+    # 単語、レンマ、品詞の抽出
+    word = token.findtext('word')
+    lemma = token.findtext('lemma')
+    pos = token.findtext('POS')
+    print('{}\t{}\t{}'.format(word, lemma, pos))
